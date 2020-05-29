@@ -23,10 +23,6 @@ class YoutubeBot:
         self.driver.get(
             "https://www.youtube.com/playlist?list=PLhaBYjOdLf6VYXiFsmPYJR4yvR30LbIbB"
         )
-        sleep(2)
-        self.driver.find_element_by_xpath(
-            "//*[@aria-label='Shuffle play']"
-        ).click()
 
     def acid(self):
         """Access acid playlist."""
@@ -35,9 +31,13 @@ class YoutubeBot:
             "https://www.youtube.com/playlist?list=PLhaBYjOdLf6UMD3z8ekHUk9Hmigtj8ix7"
         )
         sleep(2)
-        self.driver.find_element_by_xpath(
-            "//*[@aria-label='Shuffle play']"
-        ).click()
+
+    def ecstasy(self):
+        """Access ecstasy playlist."""
+        self.driver = webdriver.Chrome()
+        self.driver.get(
+            "https://www.youtube.com/playlist?list=PLhaBYjOdLf6UHZA7h2drxHNOA9fxe5sTH"
+        )
 
     def coke(self):
         """Access coke playlist."""
@@ -45,10 +45,6 @@ class YoutubeBot:
         self.driver.get(
             "https://www.youtube.com/playlist?list=PLhaBYjOdLf6XU1AI2MJY-jgWJCyZd4BTd"
         )
-        sleep(2)
-        self.driver.find_element_by_xpath(
-            "//*[@aria-label='Shuffle play']"
-        ).click()
 
     def speed(self):
         """Access speed playlist."""
@@ -57,6 +53,13 @@ class YoutubeBot:
                 "We appologize. Speed is currently unavailable."
             ).upper()
         )
+
+    def play(self):
+        """Play YouTube playlist."""
+        sleep(2)
+        self.driver.find_element_by_xpath(
+            "//*[@aria-label='Shuffle play']"
+        ).click()
 
 
 class Display:
@@ -68,8 +71,9 @@ class Display:
         print("1: Weed")
         print("2: Mushrooms")
         print("3: Acid")
-        print("4: Coke")
-        print("5: Speed")
+        print("4: Ecstasy")
+        print("5: Coke")
+        print("6: Speed")
         print("q: Quit")
         return input("Your selection: ")
 
@@ -106,29 +110,27 @@ class Display:
         waiting_for_input = True
         while waiting_for_input:
             user_input = self.get_user_input()
+            self.wait()
+            bot = YoutubeBot()
             if user_input == "1":
-                self.wait()
-                bot = YoutubeBot()
                 bot.weed()
             elif user_input == "2":
-                self.wait()
-                bot = YoutubeBot()
                 bot.mushrooms()
+                bot.play()
             elif user_input == "3":
-                self.wait()
-                bot = YoutubeBot()
                 bot.acid()
+                bot.play()
             elif user_input == "4":
-                self.wait()
-                bot = YoutubeBot()
-                bot.coke()
+                bot.ecstasy()
+                bot.play()
             elif user_input == "5":
-                self.wait()
-                bot = YoutubeBot()
+                bot.coke()
+                bot.play()
+            elif user_input == "6":
                 bot.speed()
             elif user_input == "q":
                 print(
-                    "\n{:-^80}\n".format(
+                    "{:-^80}\n".format(
                         "No drugs have been administered."
                     ).upper()
                 )

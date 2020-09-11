@@ -4,6 +4,11 @@ This project was created with [Selenium](https://github.com/SeleniumHQ/selenium)
 
 Music for Drugs is a fun script project created to help increase my productivity when writing code.
 
+The user is prompted to choose a drug of choice which correlates to an electronic music genre playlist.
+The YouTube playlist is accessed via Selenium.
+
+---
+
 ### How to Run
 
 Clone the repository
@@ -30,6 +35,3 @@ Run the code
 ```zsh
 python3 drugs.py
 ````
-
-The user is prompted to choose a drug of choice which correlates to an electronic music genre playlist.
-The YouTube playlist is accessed via Selenium.
